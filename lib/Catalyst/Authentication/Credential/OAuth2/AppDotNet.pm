@@ -193,7 +193,7 @@ sub request_access_token {
   
   my $response = $self->ua->request($request);
   unless ($response->is_success) {
-      warn Data::Dumpep::Dumper $response;
+      warn Data::Dumper::Dumper $response;
   }
   return unless $response->is_success;
   return $j->jsonToObj( $response->decoded_content );
