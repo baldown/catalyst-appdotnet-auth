@@ -192,6 +192,9 @@ sub request_access_token {
   $request->header('Content-Length' => length($content));
   
   my $response = $self->ua->request($request);
+  unless ($response->is_success) {
+      warn Data::Dumpep::Dumper $response;
+  }
   return unless $response->is_success;
   return $j->jsonToObj( $response->decoded_content );
 }
